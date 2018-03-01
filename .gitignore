@@ -10,3 +10,5 @@ Gemfile.lock
 deploy_key*
 deploy_key*.pub
 *.keybase
+data/headlines/
+data/edges/
