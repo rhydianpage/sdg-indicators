@@ -17,3 +17,4 @@ RUN bundle install
 
 EXPOSE 4000
 
+CMD /sdg/scripts/build/docker_build.sh 
