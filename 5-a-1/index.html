@@ -43,7 +43,7 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css">
-        <link rel="stylesheet" href="/sdg-indicators/assets/css/default.css?v=20180323113943">
+        <link rel="stylesheet" href="/sdg-indicators/assets/css/default.css?v=20180326101848">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
     </head>
 <body>
@@ -212,8 +212,8 @@
     </div>
   </div>
   
-  <div class="row" id="indicatorData" data-indicatordata='[{"Year":"2017","Occupation category":null,"Value":"27.16659634"},{"Year":"2017","Occupation category":"Managers and proprietors in agriculture and horticulture","Value":"20.33297408"},{"Year":"2017","Occupation category":"Managers and proprietors in forestry, fishing and related services","Value":"43.77283066"},{"Year":"2016","Occupation category":null,"Value":"40.38863643"},{"Year":"2016","Occupation category":"Managers and proprietors in agriculture and horticulture","Value":"23.43346109"},{"Year":"2016","Occupation category":"Managers and proprietors in forestry, fishing and related services","Value":"68.71416871"},{"Year":"2015","Occupation category":null,"Value":"27.3813436"},{"Year":"2015","Occupation category":"Managers and proprietors in agriculture and horticulture","Value":"15.22340546"},{"Year":"2015","Occupation category":"Managers and proprietors in forestry, fishing and related services","Value":"47.16620413"},{"Year":"2014","Occupation category":null,"Value":"27.25996842"},{"Year":"2014","Occupation category":"Managers and proprietors in agriculture and horticulture","Value":"21.3182158"},{"Year":"2014","Occupation category":"Managers and proprietors in forestry, fishing and related services","Value":"51.72502244"},{"Year":"2013","Occupation category":null,"Value":"53.10836564"},{"Year":"2013","Occupation category":"Managers and proprietors in agriculture and horticulture","Value":"36.74530411"},{"Year":"2013","Occupation category":"Managers and proprietors in forestry, fishing and related services","Value":"76.43870556"},{"Year":"2012","Occupation category":null,"Value":"26.59864966"},{"Year":"2012","Occupation category":"Managers and proprietors in agriculture and horticulture","Value":"24.02608772"},{"Year":"2012","Occupation category":"Managers and proprietors in forestry, fishing and related services","Value":"32.20727169"}]' data-indicatorid='indicator_5-a-1' data-country="United Kingdom"
-  data-edgesdata='[]' data-charttitle="Percentage (%) of women in Managers and Proprietors in Agriculture Related Services" data-measurementunit="Percentage (%)" data-datasource="Office for National Statistics (ONS)" data-geographicalarea="United Kingdom" data-footnote="The period April to June is being used to report annual data. The date on the X axis is the year at the start of the period" data-showdata="true" data-graphtype="line">
+  <div class="row" id="indicatorData" data-indicatorid='indicator_5-a-1' data-country="United Kingdom"
+  data-charttitle="Percentage (%) of women in Managers and Proprietors in Agriculture Related Services" data-measurementunit="Percentage (%)" data-datasource="Office for National Statistics (ONS)" data-geographicalarea="United Kingdom" data-footnote="The period April to June is being used to report annual data. The date on the X axis is the year at the start of the period" data-showdata="true" data-graphtype="line">
     
     <div class="col-md-3">
       <div id="toolbar">
@@ -222,7 +222,9 @@
           <p>Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.</p>
         </span>
         <p>Click on the legend to remove individual lines from the chart.</p>
-        <div id="fields"></div>
+        <div id="fields">
+          <p class="async-loading" data-img="/sdg-indicators/assets/img/loading-small.gif"></p>
+        </div>
       </div>
       <div id="units"></div>
     </div>
@@ -354,19 +356,21 @@
       <section>
         
         
-        <ul class="nav nav-tabs data-view" role="tablist">
-          <li role="presentation" class="nav-item active">
-            <a class="nav-link" data-toggle="tab" href="#chartview" aria-controls="chartview" role="tab">Chart</a>
-          </li>
-          <li role="presentation" class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#tableview" aria-controls="tableview" role="tab">Table</a>
-          </li>
-        </ul>
-        
-        <!-- Tab panes -->
-        <div class="tab-content data-view">
-          <div role="tabpanel" class="tab-pane active" id="chartview">
-            
+        <p class="async-loading" data-img="/sdg-indicators/assets/img/loading-small.gif"></p>
+        <div class="async-loaded" style="display:none">
+          <ul class="nav nav-tabs data-view" role="tablist">
+            <li role="presentation" class="nav-item active">
+              <a class="nav-link" data-toggle="tab" href="#chartview" aria-controls="chartview" role="tab">Chart</a>
+            </li>
+            <li role="presentation" class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#tableview" aria-controls="tableview" role="tab">Table</a>
+            </li>
+          </ul>
+          
+          <!-- Tab panes -->
+          <div class="tab-content data-view">
+            <div role="tabpanel" class="tab-pane active" id="chartview">
+              
     
     
 
@@ -385,9 +389,10 @@
     
 
 
-          </div>
-          <div role="tabpanel" class="tab-pane" id="tableview">
-            <div id="selectionsTable"></div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="tableview">
+              <div id="selectionsTable"></div>
+            </div>
           </div>
         </div>
         
@@ -1422,7 +1427,7 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js"></script>
 <script type="text/javascript"> window.loop11_key = "0104054b3b56d396b42e668dfe096cee161454a8"; </script>
 <script src="//cdn.loop11.com/my/loop11.js" type="text/javascript" async="async"></script>
-<script src='/sdg-indicators/assets/js/sdg.js?v=20180323113943'></script>
+<script src='/sdg-indicators/assets/js/sdg.js?v=20180326101848'></script>
 <script src="/sdg-indicators/assets/js/lib/classList.js"></script>
 <script src="/sdg-indicators/assets/js/lib/modernizr-custom.js"></script>
 <script src="//cdn.jsdelivr.net/bluebird/3.5.0/bluebird.min.js"></script>
@@ -1431,31 +1436,44 @@ $(function() {
     if($('#indicatorData').length) {
       var domData = $('#indicatorData').data();
 
-      var model = new indicatorModel({
-        data: domData.indicatordata,
-        country: domData.country,
-        indicatorId: domData.indicatorid,
-        chartTitle: domData.charttitle,
-        edgesData: domData.edgesdata,
-        measurementUnit: domData.measurementunit,
-        dataSource: domData.datasource,
-        geographicalArea: domData.geographicalarea,
-        showData: domData.showdata,
-        footnote: domData.footnote,
-        graphType: domData.graphtype
-      }),
-      view  = new indicatorView(model, {
-        rootElement: '#indicatorData',
-        legendElement: '#plotLegend',
-        maxChartHeight: 600,
-        tableColumnDefs: [
-          { maxCharCount: 25 }, // nowrap
-          { maxCharCount: 35, width: 200 },
-          { maxCharCount: Infinity, width: 250 }
-        ]
-      }),
-      controller = new indicatorController(model, view);
-      controller.initialise();
+      $('.async-loading').each(function(i, obj) {
+          $(obj).append($('<img />').attr('src', $(obj).data('img')));
+      });
+
+      $.ajax({ 
+        url: '/sdg-indicators/data/json/' + domData.indicatorid + '.json', 
+        success: function(res) { 
+
+          $('.async-loading').remove();
+          $('.async-loaded').show();
+
+          var model = new indicatorModel({
+            data: res.data,
+            edgesData: res.edges,
+            country: domData.country,
+            indicatorId: domData.indicatorid,
+            chartTitle: domData.charttitle,
+            measurementUnit: domData.measurementunit,
+            dataSource: domData.datasource,
+            geographicalArea: domData.geographicalarea,
+            showData: domData.showdata,
+            footnote: domData.footnote,
+            graphType: domData.graphtype
+          }),
+          view  = new indicatorView(model, {
+            rootElement: '#indicatorData',
+            legendElement: '#plotLegend',
+            maxChartHeight: 600,
+            tableColumnDefs: [
+              { maxCharCount: 25 }, // nowrap
+              { maxCharCount: 35, width: 200 },
+              { maxCharCount: Infinity, width: 250 }
+            ]
+          }),
+          controller = new indicatorController(model, view);
+          controller.initialise();
+        }
+      });
     }
 
     var switcher = new accessibilitySwitcher();
