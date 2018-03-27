@@ -46,6 +46,12 @@ header {
   border-bottom: 1px solid #cdcdcd;
   padding: 4px 0;
   padding: 4px 0; }
+.results p.description {
+  border: none; }
+.results p.keywords {
+  border: none;
+  font-style: italic;
+  color: #444; }
 .results h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
