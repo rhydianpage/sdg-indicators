@@ -222,6 +222,9 @@ var indicatorModel = function (options) {
   this.dataHasUnitSpecificFields = false;
   this.fieldValueStatuses = [];
   this.validParentsByChild = {};
+  this.hasGeoData = false;
+  this.geoData = [];
+  this.geoCodeRegEx = options.geoCodeRegEx;
 
   // initialise the field information, unique fields and unique values for each field:
   (function initialise() {
@@ -233,6 +236,15 @@ var indicatorModel = function (options) {
     };
 
     that.years = extractUnique('Year');
+
+    if(that.data[0].hasOwnProperty('GeoCode')) {
+      that.hasGeoData = true;
+
+      // Year, GeoCode, Value
+      that.geoData = _.filter(that.data, function(dataItem) {
+        return dataItem.GeoCode;
+      });
+    }
 
     if(that.data[0].hasOwnProperty('Units')) {
       that.units = extractUnique('Units');
@@ -263,8 +275,7 @@ var indicatorModel = function (options) {
     }
 
     that.fieldItemStates = _.map(_.filter(Object.keys(that.data[0]), function (key) {
-        // 'Value' may not be present, but 'Year' and '
-        return ['Year', 'Value', 'Units'].indexOf(key) === -1;
+        return ['Year', 'Value', 'Units', 'GeoCode'].indexOf(key) === -1;
       }), function(field) {
       return {
         field: field,
@@ -710,7 +721,10 @@ var indicatorModel = function (options) {
           return _.findWhere(that.fieldsByUnit, { unit : that.selectedUnit }).fields.indexOf(fis.field) != -1;
         }) : this.fieldItemStates,
         allowedFields: this.allowedFields,
-        edges: this.edgesData
+        edges: this.edgesData,
+        hasGeoData: this.hasGeoData,
+        geoData: this.geoData,
+        geoCodeRegEx: this.geoCodeRegEx
       });
 
 
@@ -739,6 +753,19 @@ indicatorModel.prototype = {
   }
 };
 
+var mapView = function () {
+  
+  "use strict";
+  
+  this.initialise = function(geoData, geoCodeRegEx) {
+    $('.map').show();
+    $('#map').sdgMap({
+      geoData: geoData,
+      geoCodeRegEx: geoCodeRegEx
+    });
+  }
+};
+
 var indicatorView = function (model, options) {
   
   "use strict";
@@ -749,6 +776,7 @@ var indicatorView = function (model, options) {
   this._chartInstance = undefined;
   this._rootElement = options.rootElement;
   this._tableColumnDefs = options.tableColumnDefs;
+  this._mapView = undefined;
   this._legendElement = options.legendElement;
   
   var chartHeight = screen.height < options.maxChartHeight ? screen.height : options.maxChartHeight;
@@ -799,6 +827,11 @@ var indicatorView = function (model, options) {
   
   this._model.onSeriesComplete.attach(function(sender, args) {
     view_obj.initialiseSeries(args);
+
+    if(args.hasGeoData) {
+      view_obj._mapView = new mapView();
+      view_obj._mapView.initialise(args.geoData, args.geoCodeRegEx);
+    }
   });
 
   this._model.onSeriesSelectedChanged.attach(function(sender, args) {
