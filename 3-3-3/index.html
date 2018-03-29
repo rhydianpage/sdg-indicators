@@ -43,7 +43,7 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css">
-        <link rel="stylesheet" href="/sdg-indicators/assets/css/default.css?v=20180329154816">
+        <link rel="stylesheet" href="/sdg-indicators/assets/css/default.css?v=20180329160008">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
     </head>
 <body>
@@ -213,7 +213,7 @@
   </div>
   
   <div class="row" id="indicatorData" data-indicatorid='indicator_3-3-3' data-country="United Kingdom"
-  data-charttitle="Malaria incidence per 100,000 population" data-measurementunit="Incident rate per 100,000 population" data-datasource="Office for National Statistics (ONS)" data-geographicalarea="United Kingdom" data-footnote="" data-showdata="true" data-graphtype="line" data-geocoderegex="">
+  data-charttitle="Malaria incidence per 100,000 population" data-measurementunit="Incident rate per 100,000 population" data-datasource="Office for National Statistics (ONS)" data-geographicalarea="United Kingdom" data-footnote="" data-showdata="true" data-graphtype="line" data-geocoderegex="" data-showmap="">
     
     <div class="col-md-3">
       <div id="toolbar">
@@ -694,7 +694,7 @@
             
 
             
-              <a href="https://github.com/datasciencecampus/sdg-indicators/commit/673ddc28795639a400f35e81c57d9c9f5f668a9a" target="_blank">
+              <a href="https://github.com/datasciencecampus/sdg-indicators/commit/79627e19c6f6a99ba7276a9d0a8ea6b390b81efb" target="_blank">
                 2018-03-14: see changes on GitHub <span class="visuallyhidden">opens in a new window</span>
               </a>
             
@@ -735,6 +735,8 @@
     
       
       
+  
+    
   
     
   
@@ -1213,6 +1215,8 @@
   
     
   
+    
+  
 </table>
 
               </article>
@@ -1233,6 +1237,8 @@
         <h4>Source 1</h4>
       
       <table class="table table-hover">
+  
+    
   
     
   
@@ -1663,6 +1669,8 @@
     
   
     
+  
+    
       
       <tr>
         <th scope="row">Organisation </th>
@@ -1965,7 +1973,7 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 <script src="/sdg-indicators/assets/js/plugins/jquery.sdgMap.js"></script>
 <script type="text/javascript"> window.loop11_key = "0104054b3b56d396b42e668dfe096cee161454a8"; </script>
 <script src="//cdn.loop11.com/my/loop11.js" type="text/javascript" async="async"></script>
-<script src='/sdg-indicators/assets/js/sdg.js?v=20180329154816'></script>
+<script src='/sdg-indicators/assets/js/sdg.js?v=20180329160008'></script>
 <script src="/sdg-indicators/assets/js/lib/classList.js"></script>
 <script src="/sdg-indicators/assets/js/lib/modernizr-custom.js"></script>
 <script src="//cdn.jsdelivr.net/bluebird/3.5.0/bluebird.min.js"></script>
@@ -1989,6 +1997,7 @@ $(function() {
             data: res.data,
             edgesData: res.edges,
             geoCodeRegEx: domData.geocoderegex,
+            showMap: domData.showmap,
             country: domData.country,
             indicatorId: domData.indicatorid,
             chartTitle: domData.charttitle,
