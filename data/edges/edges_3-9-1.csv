@@ -1,2 +1,4 @@
 From,To
 Region,Local Authority
+Geocode,Region
+Geocode,Deprivation Decile
